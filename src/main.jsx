@@ -4,7 +4,7 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router";
 
 //imports dos styles
-import "./styles/main";
+import "./styles/main.css";
 import "./styles/reset.css";
 
 //imports dos componentes

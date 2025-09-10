@@ -1,6 +1,20 @@
 @use "fonts";
+@use "colors";
+@use "loader";
+@use "cards";
 
 html,
 body {
   font-family: "SFRegular", sans-serif;
+  @include colors.background(blue);
+  box-sizing: border-box;
+}
+
+.products__grid {
+  display: grid;
+  grid-template-columns: repeat(3,15vw);
+  gap: 7rem;
+  position: absolute;
+  right: 0;
+  top: 3rem;
 }
