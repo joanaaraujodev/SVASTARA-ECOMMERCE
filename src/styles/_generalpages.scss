@@ -1,0 +1,25 @@
+.master {
+  display: grid;
+  grid-template-columns: 20fr 80fr;
+  grid-template-rows: auto 650px;
+  grid-template-areas:
+    "sidebar main"
+    "footer footer";
+  padding: 3rem;
+
+  .main {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    grid-area: main;
+  }
+
+  .sidebar {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 2rem;
+    grid-area: sidebar;
+  }
+
+ 
+}
