@@ -64,7 +64,7 @@
   top: 1.3rem;
   right: 1.3rem;
   border: none;
-  z-index: 999;
+  z-index: 2;
   border-radius: 0.25rem;
 }
 .productCard .productCard__img {
@@ -144,6 +144,71 @@
   right: 1rem;
 }
 
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  position: sticky;
+  top: 1rem;
+  z-index: 999;
+  padding: 0.8rem 2.8rem;
+  border-radius: 3rem;
+  margin-right: 1rem;
+  margin-left: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, color 0.3s ease, -webkit-backdrop-filter 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease, backdrop-filter 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease, backdrop-filter 0.3s ease, -webkit-backdrop-filter 0.3s ease;
+}
+.navbar a {
+  text-decoration: none;
+  color: #1483bb;
+  font-size: 1.2rem;
+}
+.navbar.navbar--scrolled {
+  background-color: rgba(255, 255, 255, 0.1);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  color: white;
+  box-shadow: none;
+  min-height: 50px;
+  font-weight: 500;
+}
+.navbar.navbar--scrolled a {
+  color: white;
+}
+.navbar .navbar__main {
+  display: flex;
+  gap: 4rem;
+  align-items: center;
+}
+.navbar .navbar__main .navbar__main a {
+  text-decoration: none;
+  color: #1483bb;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+}
+.navbar .navbar__main .navbar__main__myfavs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  border-radius: 2rem;
+}
+.navbar .navbar__more {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+}
+.navbar .navbar__more__auth {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
 .master {
   display: grid;
   grid-template-columns: 20fr 80fr;
@@ -172,6 +237,7 @@ body {
   position: relative;
   z-index: 0;
   box-sizing: border-box;
+  letter-spacing: 1px;
 }
 html::before,
 body::before {
