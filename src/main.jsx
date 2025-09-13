@@ -8,6 +8,7 @@ import "./styles/main.css";
 import "./styles/reset.css";
 
 //imports dos componentes
+import NavBar from "./components/NavBar";
 import ProductsPage from "./pages/ProductsPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
 import FavoritesPage from "./pages/FavoritesPage";
@@ -19,6 +20,7 @@ import NotFoundPage from "./pages/NotFoundPage";
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
+      <NavBar />
       <Routes>
         <Route path="/" element={<ProductsPage />} />
         <Route path="/products" element={<ProductsPage />} />

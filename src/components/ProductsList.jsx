@@ -10,11 +10,11 @@ function ProductsList() {
     const fetchProducts = async () => {
       setIsLoading(true);
       try {
-        const data = await fetch(` https://api.escuelajs.co/api/v1/products`);
+        const data = await fetch(` https://dummyjson.com/products?limit=111`);
         const newProductsList = await data.json();
 
         setTimeout(() => {
-          setProducts(newProductsList);
+          setProducts(newProductsList.products);
           setIsLoading(false);
         }, 1000);
       } catch (error) {
@@ -28,15 +28,15 @@ function ProductsList() {
 
   return (
     <>
-      <div className="products__grid">
+      <div className="main">
         {products.map((product) => {
           return (
             <ProductCard
               key={product.id}
-              img={product.images[0]}
+              img={product.images?.[0]}
               title={product.title}
-              price={product.price}
-              category={product.category.name}
+              price={`${product.price} €`}
+              category={product.category}
             />
           );
         })}

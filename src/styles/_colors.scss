@@ -1,3 +1,14 @@
+$mainblue: #1483bb;
+$vibrantblue: #007aff;
+$darkblue: #002e58;
+$lightblue: #eef8f8;
+$white: #ffffff;
+$backgroundCards: linear-gradient(
+  to bottom,
+  rgb(203, 249, 255, 0.4),
+  rgba(20, 167, 187, 0.1)
+);
+
 @mixin background($background) {
   @if $background == blue {
     background: linear-gradient(
@@ -5,10 +16,10 @@
         rgba(128, 222, 239, 0.2) 0%,
         rgba(140, 249, 210, 0.2) 25%
       ),
-      linear-gradient(45deg, #eef8f8 0%, #1483bb 100%);
+      linear-gradient(45deg, $lightblue 0%, $mainblue 100%);
     background-attachment: fixed;
   } @else {
-    background-color: white;
+    background-color: $white;
   }
 
   position: relative;

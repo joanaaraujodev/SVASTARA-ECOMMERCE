@@ -1,7 +1,11 @@
 import ProductsList from "../components/ProductsList";
 
 function ProductsPage() {
-  return <ProductsList />;
+  return (
+    <div className="master">
+      <ProductsList />
+    </div>
+  );
 }
 
 export default ProductsPage;
