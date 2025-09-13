@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Loader from "./Loader";
 import ProductCard from "./ProductCard";
 
+
 function ProductsList() {
   const [isLoading, setIsLoading] = useState(false);
   const [products, setProducts] = useState([]);
@@ -28,7 +29,7 @@ function ProductsList() {
 
   return (
     <>
-      <div className="main">
+      <section className="main">
         {products.map((product) => {
           return (
             <ProductCard
@@ -37,10 +38,11 @@ function ProductsList() {
               title={product.title}
               price={`${product.price} €`}
               category={product.category}
+              productId={product.id}
             />
           );
         })}
-      </div>
+      </section>
     </>
   );
 }
