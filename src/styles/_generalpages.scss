@@ -1,8 +1,11 @@
+@use "colors" as *;
+@use "buttons" as *;
+
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: white;
+  background-color: $white;
   position: sticky;
   top: 1rem;
   z-index: 999;
@@ -14,36 +17,36 @@
   transition: background-color 0.3s ease, color 0.3s ease,
     backdrop-filter 0.3s ease;
 
+  .navbar__logo {
+    @include iconsOnHover($mainblue);
+  }
+
   a {
     text-decoration: none;
-    color: #1483bb;
+    color: $mainblue;
     font-size: 1.2rem;
   }
 
   &.navbar--scrolled {
     background-color: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(5px);
-    color: white;
+    color: $white;
     box-shadow: none;
     min-height: 50px;
     font-weight: 500;
 
     a {
-      color: white;
+      color: $white;
     }
   }
 
   .navbar__main {
     display: flex;
-    gap: 4rem;
+    gap: 2rem;
     align-items: center;
 
-    .navbar__main a {
-      text-decoration: none;
-      color: #1483bb;
-      font-size: 1.2rem;
-      display: flex;
-      align-items: center;
+    a {
+      @include buttonsGeneral($mainblue, none);
     }
 
     .navbar__main__myfavs {
@@ -60,12 +63,16 @@
     display: flex;
     gap: 0.8rem;
     align-items: center;
-  }
 
-  .navbar__more__auth {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
+    .navbar__more__auth {
+      @include iconsOnHover($mainblue);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .navbar__more__cart {
+      @include iconsOnHover($mainblue);
+    }
   }
 }
 

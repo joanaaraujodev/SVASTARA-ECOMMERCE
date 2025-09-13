@@ -1,94 +1,76 @@
+@use "colors" as *;
+@use "structure" as *;
+@use "structure" as *;
+@use "buttons" as *;
+
 .productCard {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  @include flex(space-between, column, null, 0);
   width: 100%;
   border-radius: 1rem;
-
   position: relative;
   overflow: hidden;
-  background: linear-gradient(
-    to bottom,
-    rgb(203, 249, 255, 0.4),
-    rgba(20, 167, 187, 0.1)
-  );
+  background: $backgroundCards;
 
   .productCard__favbutton {
     width: 1.8rem;
     height: 2.4rem;
-    background-color: #eef8f8;
+    background-color: $lightblue;
     clip-path: polygon(0% 0%, 100% 0%, 100% 70%, 50% 100%, 0% 70%);
     position: absolute;
     top: 1.3rem;
     right: 1.3rem;
     border: none;
-    z-index: 2;
     border-radius: 0.25rem;
   }
 
   .productCard__img {
     width: 100%;
-    height: auto;
     transform: scale(0.85);
     transform-origin: center;
     margin-bottom: -3rem;
-    margin-top: -2rem;
   }
 
   .productCard__row {
-    color: white;
-    padding: 1rem 1rem;
+    color: $white;
+    padding: 1rem;
     .productCard__row__main {
-      display: flex;
-      justify-content: space-between;
-
+      @include flex(space-between, row, flex-start, 0);
       .productCard__row__title {
         font-size: 1.5rem;
         font-weight: 500;
         text-align: left;
         max-width: 60%;
-        margin-bottom: 0.8rem; 
+        margin-bottom: 1.3em;
+        height: 50px;
       }
 
       .productCard__row__buy {
-        border-radius: 2rem;
-        padding: 0.2em 2em;
-        background-color: #007aff;
-        color: rgb(255, 255, 255);
-        font-size: 1rem;
-        height: 2.5rem;
-        border: 0.02rem solid rgb(255, 255, 255);
+        @include buttonsGeneral($white, 1.5px solid $white, $vibrantblue);
+        width: 30%;
+        font-size: 1.2rem;
       }
     }
 
     .productCard__price {
-      border-radius: 2rem;
-      padding: 0.5em 1em;
-      background-color: rgb(255, 255, 255);
-      color: #007aff;
+      @include buttonsGeneral(
+        $vibrantblue,
+        1.2px solid $vibrantblue,
+        $withHover: false
+      );
       font-size: 1rem;
       font-weight: 500;
-      border: 0.02rem solid#007AFF;
-      max-width: 7rem;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.2rem;
     }
   }
   .productCard__footer {
-    display: flex;
-    justify-content: flex-start;
-    background-color: white;
+    @include flex(flex-start, row, center, 1rem);
+    background-color: $white;
     padding: 0.8rem 1.2rem;
-    align-items: center;
-    gap: 1rem;
     position: relative;
 
     .productCard__footer__txt {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0.4rem;
+      @include flex(null, column, flex-start, 0.4rem);
       font-size: 0.8rem;
-
       .productCard__footer__txt__category {
         color: rgb(26, 26, 26, 0.5);
       }

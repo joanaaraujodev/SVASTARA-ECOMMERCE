@@ -47,8 +47,9 @@
 }
 .productCard {
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
+  flex-direction: column;
+  gap: 0;
   width: 100%;
   border-radius: 1rem;
   position: relative;
@@ -64,59 +65,71 @@
   top: 1.3rem;
   right: 1.3rem;
   border: none;
-  z-index: 2;
   border-radius: 0.25rem;
 }
 .productCard .productCard__img {
   width: 100%;
-  height: auto;
   transform: scale(0.85);
   transform-origin: center;
   margin-bottom: -3rem;
-  margin-top: -2rem;
 }
 .productCard .productCard__row {
-  color: white;
-  padding: 1rem 1rem;
+  color: #ffffff;
+  padding: 1rem;
 }
 .productCard .productCard__row .productCard__row__main {
   display: flex;
   justify-content: space-between;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 0;
 }
 .productCard .productCard__row .productCard__row__main .productCard__row__title {
   font-size: 1.5rem;
   font-weight: 500;
   text-align: left;
   max-width: 60%;
-  margin-bottom: 0.8rem;
+  margin-bottom: 1.3em;
+  height: 50px;
 }
 .productCard .productCard__row .productCard__row__main .productCard__row__buy {
+  text-decoration: none;
+  padding: 0.6em 0.8em;
   border-radius: 2rem;
-  padding: 0.2em 2em;
+  font-weight: 600;
+  border: 1.5px solid #ffffff;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
   background-color: #007aff;
-  color: rgb(255, 255, 255);
-  font-size: 1rem;
-  height: 2.5rem;
-  border: 0.02rem solid rgb(255, 255, 255);
+  color: #ffffff;
+  width: 30%;
+  font-size: 1.2rem;
+}
+.productCard .productCard__row .productCard__row__main .productCard__row__buy:hover {
+  cursor: pointer;
+  background-color: #ffffff;
+  color: #007aff;
 }
 .productCard .productCard__row .productCard__price {
+  text-decoration: none;
+  padding: 0.6em 0.8em;
   border-radius: 2rem;
-  padding: 0.5em 1em;
-  background-color: rgb(255, 255, 255);
+  font-weight: 600;
+  border: 1.2px solid #007aff;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  background-color: #ffffff;
   color: #007aff;
   font-size: 1rem;
   font-weight: 500;
-  border: 0.02rem solid #007AFF;
-  max-width: 7rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.2rem;
 }
 .productCard .productCard__footer {
   display: flex;
   justify-content: flex-start;
-  background-color: white;
-  padding: 0.8rem 1.2rem;
+  flex-direction: row;
   align-items: center;
   gap: 1rem;
+  background-color: #ffffff;
+  padding: 0.8rem 1.2rem;
   position: relative;
 }
 .productCard .productCard__footer .productCard__footer__txt {
@@ -148,7 +161,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: white;
+  background-color: #ffffff;
   position: sticky;
   top: 1rem;
   z-index: 999;
@@ -161,6 +174,13 @@
   transition: background-color 0.3s ease, color 0.3s ease, backdrop-filter 0.3s ease;
   transition: background-color 0.3s ease, color 0.3s ease, backdrop-filter 0.3s ease, -webkit-backdrop-filter 0.3s ease;
 }
+.navbar .navbar__logo {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.navbar .navbar__logo:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 10px rgba(20, 131, 187, 0.1));
+}
 .navbar a {
   text-decoration: none;
   color: #1483bb;
@@ -170,25 +190,33 @@
   background-color: rgba(255, 255, 255, 0.1);
   -webkit-backdrop-filter: blur(5px);
           backdrop-filter: blur(5px);
-  color: white;
+  color: #ffffff;
   box-shadow: none;
   min-height: 50px;
   font-weight: 500;
 }
 .navbar.navbar--scrolled a {
-  color: white;
+  color: #ffffff;
 }
 .navbar .navbar__main {
   display: flex;
-  gap: 4rem;
+  gap: 2rem;
   align-items: center;
 }
-.navbar .navbar__main .navbar__main a {
+.navbar .navbar__main a {
   text-decoration: none;
+  padding: 0.6em 0.8em;
+  border-radius: 2rem;
+  font-weight: 600;
+  border: none;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  background-color: #ffffff;
   color: #1483bb;
-  font-size: 1.2rem;
-  display: flex;
-  align-items: center;
+}
+.navbar .navbar__main a:hover {
+  cursor: pointer;
+  background-color: #1483bb;
+  color: #ffffff;
 }
 .navbar .navbar__main .navbar__main__myfavs {
   display: flex;
@@ -203,10 +231,22 @@
   gap: 0.8rem;
   align-items: center;
 }
-.navbar .navbar__more__auth {
+.navbar .navbar__more .navbar__more__auth {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   align-items: center;
   gap: 0.4rem;
+}
+.navbar .navbar__more .navbar__more__auth:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 10px rgba(20, 131, 187, 0.1));
+}
+.navbar .navbar__more .navbar__more__cart {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.navbar .navbar__more .navbar__more__cart:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 10px rgba(20, 131, 187, 0.1));
 }
 
 .master {

@@ -3,12 +3,13 @@
 @use "loader";
 @use "cards";
 @use "generalpages";
-// @use "buttons";
+@use "buttons";
+@use "structure";
 
 html,
 body {
   font-family: "SFRegular", sans-serif;
   @include colors.background(blue);
   box-sizing: border-box;
-  letter-spacing: 1px; 
+  letter-spacing: 1px;
 }

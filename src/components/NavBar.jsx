@@ -14,7 +14,7 @@ function NavBar() {
 
   return (
     <nav className={`navbar ${scrolled ? "navbar--scrolled" : ""}`}>
-      <Link to="/products">
+      <Link className="navbar__logo" to="/products">
         <img
           src="src/assets/logos/logotipo_original.png"
           alt="logo"
@@ -53,7 +53,7 @@ function NavBar() {
             width={30}
           />
         </Link>
-        <Link to="/cart">
+        <Link className="navbar__more__cart"  to="/cart">
           <img
             src={
               !scrolled
