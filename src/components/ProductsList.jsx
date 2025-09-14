@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import Loader from "./Loader";
 import ProductCard from "./ProductCard";
 
-
 function ProductsList() {
   const [isLoading, setIsLoading] = useState(false);
   const [products, setProducts] = useState([]);
@@ -29,10 +28,12 @@ function ProductsList() {
 
   return (
     <>
+
       <section className="main">
         {products.map((product) => {
           return (
             <ProductCard
+              className="productCard"
               key={product.id}
               img={product.images?.[0]}
               title={product.title}

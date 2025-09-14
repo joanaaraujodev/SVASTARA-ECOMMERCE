@@ -78,3 +78,13 @@
     grid-area: sidebar;
   }
 }
+
+.cartMain {
+  display: grid;
+  gap: 2rem;
+  grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
+  width: 90vw;
+  margin: 0 auto;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
