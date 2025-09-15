@@ -1,0 +1,35 @@
+function Counter({ value, onChange }) {
+  
+  const increment = () => {
+    if (value < 10) onChange(value + 1);
+  };
+
+  const decrement = () => {
+    if (value > 1) onChange(value - 1);
+  };
+
+  return (
+    <div className="productCardCart__info__counter">
+      <button
+        onClick={decrement}
+        className="productCardCart__info__counter__button"
+      >
+        -
+      </button>
+      <input
+        type="number"
+        value={value}
+        readOnly
+        className="productCardCart__info__counter__input"
+      />
+      <button
+        onClick={increment}
+        className="productCardCart__info__counter__button"
+      >
+        +
+      </button>
+    </div>
+  );
+}
+
+export default Counter;
