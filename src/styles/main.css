@@ -55,6 +55,14 @@
   position: relative;
   overflow: hidden;
   background: linear-gradient(to bottom, rgba(203, 249, 255, 0.4), rgba(20, 167, 187, 0.1));
+  transition: transform 0.3s ease;
+}
+.productCard:hover {
+  transform: scale(1.03);
+  cursor: pointer;
+}
+.productCard a {
+  text-decoration: none;
 }
 .productCard .productCard__favbutton {
   width: 1.8rem;
@@ -124,25 +132,30 @@
 }
 .productCard .productCard__footer {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   flex-direction: row;
   align-items: center;
   gap: 1rem;
   background-color: #ffffff;
   padding: 0.8rem 1.2rem;
-  position: relative;
 }
-.productCard .productCard__footer .productCard__footer__txt {
+.productCard .productCard__footer .productCard__footer__info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.6rem;
+}
+.productCard .productCard__footer .productCard__footer__info .productCard__footer__info__txt {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 0.4rem;
   font-size: 0.8rem;
 }
-.productCard .productCard__footer .productCard__footer__txt .productCard__footer__txt__category {
+.productCard .productCard__footer .productCard__footer__info .productCard__footer__info__txt .productCard__footer__info__txt__category {
   color: rgba(26, 26, 26, 0.5);
 }
-.productCard .productCard__footer .productCard__footer__categoryicon {
+.productCard .productCard__footer .productCard__footer__info .productCard__footer__info__categoryicon {
   width: 1.4rem;
   height: 1.4rem;
   background-color: black;
@@ -150,29 +163,107 @@
   padding: 0.3rem;
 }
 .productCard .productCard__footer .productCard__footer__logo {
-  width: 40px;
   height: 40px;
   opacity: 0.05;
+}
+
+.cartspage_title {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 5rem;
+}
+
+.Cart__txt {
+  font-size: 3rem;
+  font-weight: 400;
+  color: #ffffff;
+  margin-top: 0.4rem;
+}
+
+.productCardCart {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  align-items: center;
+  gap: 3rem;
+  border-radius: 0.5rem;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(to right, rgba(203, 249, 255, 0.4), rgba(20, 167, 187, 0.1));
+}
+.productCardCart .productCardCart__favbutton {
+  width: 1.8rem;
+  height: 2.4rem;
+  background-color: #eef8f8;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 70%, 50% 100%, 0% 70%);
   position: absolute;
-  right: 1rem;
+  top: 1.8rem;
+  right: 1.8rem;
+  border: none;
+  border-radius: 0.25rem;
+}
+.productCardCart .productCardCart__img {
+  width: 20%;
+}
+.productCardCart .productCardCart__bin {
+  width: 40px;
+  position: absolute;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.productCardCart .productCardCart__bin:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 15px #ffffff);
+}
+.productCardCart .productCardCart__row {
+  color: #ffffff;
+  padding: 1rem;
+}
+.productCardCart .productCardCart__row .productCardCart__row__main {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 0;
+}
+.productCardCart .productCardCart__row .productCardCart__row__main .productCardCart__row__title {
+  font-size: 1.6rem;
+  text-wrap: wrap;
+  max-width: 300px;
+  margin-bottom: 1em;
+}
+.productCardCart .productCardCart__row .productCardCart__price {
+  text-decoration: none;
+  padding: 0.6em 0.8em;
+  border-radius: 2rem;
+  font-weight: 600;
+  border: 1.2px solid #007aff;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  background-color: #ffffff;
+  color: #007aff;
+  font-size: 1rem;
+  font-weight: 500;
 }
 
 .navbar {
   display: flex;
   justify-content: space-between;
+  flex-direction: row;
   align-items: center;
+  gap: 0;
   background-color: #ffffff;
   position: sticky;
   top: 1rem;
   z-index: 999;
   padding: 0.8rem 2.8rem;
   border-radius: 3rem;
-  margin-right: 1rem;
-  margin-left: 1rem;
+  margin: 0 1rem;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s ease, color 0.3s ease, -webkit-backdrop-filter 0.3s ease;
-  transition: background-color 0.3s ease, color 0.3s ease, backdrop-filter 0.3s ease;
-  transition: background-color 0.3s ease, color 0.3s ease, backdrop-filter 0.3s ease, -webkit-backdrop-filter 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 .navbar .navbar__logo {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -192,16 +283,15 @@
           backdrop-filter: blur(5px);
   color: #ffffff;
   box-shadow: none;
-  min-height: 50px;
-  font-weight: 500;
 }
 .navbar.navbar--scrolled a {
   color: #ffffff;
 }
 .navbar .navbar__main {
   display: flex;
-  gap: 2rem;
+  flex-direction: row;
   align-items: center;
+  gap: 2rem;
 }
 .navbar .navbar__main a {
   text-decoration: none;
@@ -219,21 +309,20 @@
   color: #ffffff;
 }
 .navbar .navbar__main .navbar__main__myfavs {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   padding: 0.5rem 1rem;
   text-align: center;
   border-radius: 2rem;
 }
 .navbar .navbar__more {
   display: flex;
-  gap: 0.8rem;
+  flex-direction: row;
   align-items: center;
+  gap: 0.8rem;
 }
 .navbar .navbar__more .navbar__more__auth {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
+  flex-direction: row;
   align-items: center;
   gap: 0.4rem;
 }
@@ -259,14 +348,26 @@
 .master .main {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(auto, 1fr);
   gap: 2rem;
   grid-area: main;
 }
 .master .sidebar {
   display: grid;
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(6, 1fr);
   gap: 2rem;
   grid-area: sidebar;
+}
+
+.cartMain {
+  display: grid;
+  gap: 2rem;
+  grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
+  width: 90vw;
+  margin: 0 auto;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
 }
 
 html,
@@ -303,4 +404,8 @@ body::after {
   opacity: 0.08;
   transform: translateX(-50%);
   z-index: -1;
+}
+
+a {
+  text-decoration: none;
 }/*# sourceMappingURL=main.css.map */

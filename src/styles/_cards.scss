@@ -10,6 +10,16 @@
   position: relative;
   overflow: hidden;
   background: $backgroundCards;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.03);
+    cursor: pointer;
+  }
+
+  a {
+    text-decoration: none;
+  }
 
   .productCard__favbutton {
     width: 1.8rem;
@@ -63,33 +73,103 @@
     }
   }
   .productCard__footer {
-    @include flex(flex-start, row, center, 1rem);
+    @include flex(space-between, row, center, 1rem);
     background-color: $white;
     padding: 0.8rem 1.2rem;
-    position: relative;
 
-    .productCard__footer__txt {
-      @include flex(null, column, flex-start, 0.4rem);
-      font-size: 0.8rem;
-      .productCard__footer__txt__category {
-        color: rgb(26, 26, 26, 0.5);
+    .productCard__footer__info {
+      @include flex(null, row, center, 0.6rem);
+      .productCard__footer__info__txt {
+        @include flex(null, column, flex-start, 0.4rem);
+        font-size: 0.8rem;
+        .productCard__footer__info__txt__category {
+          color: rgb(26, 26, 26, 0.5);
+        }
+      }
+
+      .productCard__footer__info__categoryicon {
+        width: 1.4rem;
+        height: 1.4rem;
+        background-color: black;
+        border-radius: 0.5rem;
+        padding: 0.3rem;
       }
     }
 
-    .productCard__footer__categoryicon {
-      width: 1.4rem;
-      height: 1.4rem;
-      background-color: black;
-      border-radius: 0.5rem;
-      padding: 0.3rem;
-    }
-
     .productCard__footer__logo {
-      width: 40px;
       height: 40px;
       opacity: 0.05;
-      position: absolute;
-      right: 1rem;
     }
   }
+}
+
+.cartspage_title {
+  @include flex(center, row, center, 2rem);
+  margin-top: 5rem;
+}
+
+.Cart__txt {
+  font-size: 3rem;
+  font-weight: 400;
+  color: $white;
+  margin-top: 0.4rem;
+}
+
+.productCardCart {
+  @include flex(flex-start, row, center, 3rem);
+  border-radius: 0.5rem;
+  position: relative;
+  overflow: hidden;
+  background: $backgroundCardsCart;
+
+  .productCardCart__favbutton {
+    width: 1.8rem;
+    height: 2.4rem;
+    background-color: $lightblue;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 70%, 50% 100%, 0% 70%);
+    position: absolute;
+    top: 1.8rem;
+    right: 1.8rem;
+    border: none;
+    border-radius: 0.25rem;
+  }
+
+  .productCardCart__img {
+    width: 20%;
+  }
+
+  .productCardCart__bin {
+    width: 40px;
+    position: absolute;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    @include iconsOnHover($white);
+  }
+
+  .productCardCart__row {
+    color: $white;
+    padding: 1rem;
+    .productCardCart__row__main {
+      @include flex(space-between, row, flex-start, 0);
+      .productCardCart__row__title {
+        font-size: 1.6rem;
+        text-wrap: wrap;
+        max-width: 300px;
+        margin-bottom: 1em;
+      }
+    }
+
+    .productCardCart__price {
+      @include buttonsGeneral(
+        $vibrantblue,
+        1.2px solid $vibrantblue,
+        $withHover: false
+      );
+      font-size: 1rem;
+      font-weight: 500;
+    }
+  }
+
+  // .productCardCart__footer__info__txt__category {
+  // }
 }

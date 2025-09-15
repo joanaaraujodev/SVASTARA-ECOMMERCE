@@ -28,19 +28,22 @@ function ProductsList() {
 
   return (
     <>
-      <div className="main">
+
+      <section className="main">
         {products.map((product) => {
           return (
             <ProductCard
+              className="productCard"
               key={product.id}
               img={product.images?.[0]}
               title={product.title}
               price={`${product.price} €`}
               category={product.category}
+              productId={product.id}
             />
           );
         })}
-      </div>
+      </section>
     </>
   );
 }

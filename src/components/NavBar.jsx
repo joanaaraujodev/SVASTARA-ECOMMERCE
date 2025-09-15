@@ -1,5 +1,10 @@
 import { Link } from "react-router";
 import { useState, useEffect } from "react";
+import logotipo_original from "../assets/logos/logotipo_original.png";
+import auth_white from "../assets/outros/auth_white.png";
+import auth_blue from "../assets/outros/auth_blue.png";
+import cart_white from "../assets/outros/cart_white.png";
+import cart_blue from "../assets/outros/cart_blue.png";
 
 function NavBar() {
   const [scrolled, setScrolled] = useState(false);
@@ -15,11 +20,7 @@ function NavBar() {
   return (
     <nav className={`navbar ${scrolled ? "navbar--scrolled" : ""}`}>
       <Link className="navbar__logo" to="/products">
-        <img
-          src="src/assets/logos/logotipo_original.png"
-          alt="logo"
-          width={220}
-        />
+        <img src={logotipo_original} alt="logo" width={220} />
       </Link>
       <div className="navbar__main">
         <Link to="/products">Products</Link>
@@ -43,26 +44,10 @@ function NavBar() {
         <Link className="navbar__more__auth" to="/auth">
           <span>login</span>
 
-          <img
-            src={
-              !scrolled
-                ? "src/assets/outros/auth_azul.png"
-                : "src/assets/outros/auth_white.png"
-            }
-            alt="cart"
-            width={30}
-          />
+          <img src={!scrolled ? auth_blue : auth_white} alt="cart" width={30} />
         </Link>
-        <Link className="navbar__more__cart"  to="/cart">
-          <img
-            src={
-              !scrolled
-                ? "src/assets/outros/cart-blue.png"
-                : "src/assets/outros/cart-white.png"
-            }
-            alt="cart"
-            width={40}
-          />
+        <Link className="navbar__more__cart" to="/cart">
+          <img src={!scrolled ? cart_blue : cart_white} alt="cart" width={40} />
         </Link>
       </div>
     </nav>
