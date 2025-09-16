@@ -8,6 +8,7 @@ function ProductsList() {
   const [page, setPage] = useState(1);
   const limit = 15;
   const pagination = [1, 2, 3, 4, 5];
+  const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
     const skip = (page - 1) * limit;
@@ -30,12 +31,24 @@ function ProductsList() {
     fetchProducts();
   }, [page]);
 
+  const filteredProducts = products.filter((fproduct) =>
+    fproduct.title.toLowerCase().includes(searchText.toLowerCase())
+  );
+
   if (isLoading === true) return <Loader />;
 
   return (
     <>
+      <div className="searchbar">
+        <input
+          type="text"
+          placeholder="Search product..."
+          value={searchText}
+          onChange={(e) => setSearchText(e.target.value)}
+        />
+      </div>
       <section className="main">
-        {products.map((product) => {
+        {filteredProducts.map((product) => {
           return (
             <ProductCard
               className="productCard"
@@ -51,7 +64,11 @@ function ProductsList() {
 
         <div className="pagination">
           {pagination.map((num) => (
-            <button className="pagination__btn"  key={num} onClick={() => setPage(num)}>
+            <button
+              className="pagination__btn"
+              key={num}
+              onClick={() => setPage(num)}
+            >
               {num}
             </button>
           ))}

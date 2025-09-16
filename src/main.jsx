@@ -13,7 +13,7 @@ import ProductsPage from "./pages/ProductsPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
 import FavoritesPage from "./pages/FavoritesPage";
 import CartPage from "./pages/CartPage";
-import ProductsCategory from "./pages/ProductsCategory";
+import ProductsCategoryPage from "./pages/ProductsCategoryPage";
 import AuthPage from "./pages/AuthPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import { CartProvider } from "./components/CartContext";
@@ -33,7 +33,10 @@ createRoot(document.getElementById("root")).render(
           <Routes>
             <Route path="/" element={<ProductsPage />} />
             <Route path="/products" element={<ProductsPage />} />
-            <Route path="/products/:category" element={<ProductsCategory />} />
+            <Route
+              path="/products/category/:categoryName"
+              element={<ProductsCategoryPage />}
+            />
             <Route path="/product/:id" element={<ProductDetailPage />} />
             <Route path="/favorites" element={<FavoritesPage />} />
             <Route path="/cart" element={<CartPage />} />
