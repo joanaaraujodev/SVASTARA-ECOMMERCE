@@ -14,11 +14,11 @@ function CartPage() {
     return (
       <>
         <div className="cartspage__title">
-          <h1 className="Cart__txt">Items in my cart</h1>
+          <h1 className="cart__txt">Items in my cart</h1>
           <img src={cart_white} alt="cart_icon" width={65} />
         </div>
 
-        <div className="Cart__nodata">
+        <div className="cart__nodata">
           <h1>
             Your cart is empty. <br />
             Start adding some products!
@@ -30,7 +30,7 @@ function CartPage() {
   return (
     <>
       <div className="cartspage__title">
-        <h1 className="Cart__txt">Items in my cart</h1>
+        <h1 className="cart__txt">Items in my cart</h1>
         <img src={cart_white} alt="cart_icon" width={65} />
       </div>
 

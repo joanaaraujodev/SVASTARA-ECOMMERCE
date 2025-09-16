@@ -25,6 +25,10 @@
     @include favButton(2.5rem);
     position: absolute;
     z-index: 2;
+    &--active {
+      filter: invert(65%) sepia(94%) saturate(1477%) hue-rotate(173deg)
+        brightness(90%) contrast(90%);
+    }
   }
 
   .productCard__img {
@@ -97,7 +101,8 @@
   }
 }
 
-.Cart__nodata {
+.cart__nodata,
+.favs__nodata {
   @include flex(center, row, center, 0);
   font-size: 2.4rem;
   color: $white;
@@ -106,12 +111,14 @@
   line-height: 1.3;
 }
 
-.cartspage__title {
+.cartspage__title,
+.favspage__title {
   @include flex(center, row, center, 2rem);
   margin-top: 5rem;
 }
 
-.Cart__txt {
+.cart__txt,
+.favs__txt {
   font-size: 3rem;
   font-weight: 400;
   color: $white;
@@ -149,6 +156,7 @@
 
     .productCardCart__favbutton {
       @include favButton(2rem);
+      
     }
   }
 
