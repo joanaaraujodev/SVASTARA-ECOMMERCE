@@ -1,5 +1,9 @@
-import { useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router";
+import { CartContext } from "./CartContext";
+import Counter from "./Counter";
+import fav from "../assets/outros/fav.png";
+import { FavoritesContext } from "./FavoritesContext";
 
 function ProductCard({
   img,
@@ -9,9 +13,10 @@ function ProductCard({
   productId,
   className,
   hasFooter = true,
-  hasBuButton = true,
+  hasButton = true,
   hasBin = false,
   bin,
+  addToFavs = false,
 }) {
   const categoryIcons = {
     Clothes: "src/assets/icones-categorias/Clothes.png",
@@ -21,25 +26,17 @@ function ProductCard({
     Miscellaneous: "src/assets/icones-categorias/Miscellaneous.png",
   };
 
+  const { addToCart, removeFromCart } = useContext(CartContext);
+  const { toggleFav, isFav } = useContext(FavoritesContext);
+  const [counterValue, setCounterValue] = useState(1);
+
   const navigate = useNavigate();
   const CardClick = () => {
     navigate(`/product/${productId}`);
   };
 
-  const [cartItems, setCartItems] = useState([]);
-
-  useEffect(() => {
-    const storedCart = localStorage.getItem("Cart");
-    if (storedCart) {
-      setCartItems(JSON.parse(storedCart));
-    }
-  }, []);
-
-  const addToCart = (product) => {
-    const updatedCart = [...cartItems, product];
-    setCartItems(updatedCart);
-    localStorage.setItem("Cart", JSON.stringify(updatedCart));
-    console.log("Carrinho atualizado:", updatedCart);
+  const calculateTotal = (unitPrice, quantity) => {
+    return `${unitPrice * quantity}€`;
   };
 
   return (
@@ -51,18 +48,54 @@ function ProductCard({
         }
       }}
     >
-      <button className={`${className}__favbutton`}></button>
+      {addToFavs ? (
+        <div className={`${className}__fav-wrapper`}>
+          <span>Add to favs</span>
+          <img
+            onClick={(e) => {
+              e.stopPropagation();
+              toggleFav({ id: productId, title });
+            }}
+            src={fav}
+            alt="fav"
+            className={`${className}__favbutton ${
+              isFav(productId) ? `${className}__favbutton--active` : ""
+            }`}
+          />
+        </div>
+      ) : (
+        <img
+          onClick={(e) => {
+            e.stopPropagation();
+            toggleFav({ id: productId, title });
+          }}
+          src={fav}
+          alt="fav"
+          className={`${className}__favbutton ${
+            isFav(productId) ? `${className}__favbutton--active` : ""
+          }`}
+        />
+      )}
 
-      <img className={`${className}__img`} src={img} alt="" />
+      <img
+        onClick={() => {
+          if (className === "productCardCart") {
+            CardClick();
+          }
+        }}
+        className={`${className}__img`}
+        src={img}
+        alt=""
+      />
       <div className={`${className}__row`}>
         <div className={`${className}__row__main`}>
           <h3 className={`${className}__row__title`}>{title}</h3>
 
-          {hasBuButton && (
+          {hasButton && (
             <button
               onClick={(e) => {
                 e.stopPropagation();
-                addToCart({ img, title, price, category });
+                addToCart({ id: productId, img, title, price, category });
               }}
               className={`${className}__row__buy`}
             >
@@ -70,7 +103,18 @@ function ProductCard({
             </button>
           )}
         </div>
-        <button className={`${className}__price`}>{price}</button>
+
+        {hasButton ? (
+          <button className={`${className}__price`}>{price}</button>
+        ) : (
+          <div className="productCardCart__info">
+            <button className="productCardCart__info__price">{price}</button>
+            <Counter value={counterValue} onChange={setCounterValue} />
+            <button className="productCardCart__info__totalprice">
+              {calculateTotal(price, counterValue)}
+            </button>
+          </div>
+        )}
       </div>
 
       {hasFooter && (
@@ -102,11 +146,7 @@ function ProductCard({
 
       {hasBin && (
         <img
-          onClick={() => {
-            if (className === "productCardCart__bin") {
-              CardClick();
-            }
-          }}
+          onClick={() => removeFromCart(productId)}
           className={`${className}__bin`}
           src={bin}
           alt="removeproduct"

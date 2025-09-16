@@ -16,21 +16,32 @@ import CartPage from "./pages/CartPage";
 import ProductsCategory from "./pages/ProductsCategory";
 import AuthPage from "./pages/AuthPage";
 import NotFoundPage from "./pages/NotFoundPage";
+import { CartProvider } from "./components/CartContext";
+import CartNotification from "./components/CartNotification";
+import { FavoritesProvider } from "./components/FavoritesContext";
+import FavsNotification from "./components/FavsNotification";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
-      <NavBar />
-      <Routes>
-        <Route path="/" element={<ProductsPage />} />
-        <Route path="/products" element={<ProductsPage />} />
-        <Route path="/products:category" element={<ProductsCategory />} />
-        <Route path="/product:title" element={<ProductDetailPage />} />
-        <Route path="/favorites" element={<FavoritesPage />} />
-        <Route path="/cart" element={<CartPage />} />
-        <Route path="/auth" element={<AuthPage />} />
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
+      <FavoritesProvider>
+        <CartProvider>
+          <CartNotification />
+          <FavsNotification />
+          <NavBar />
+
+          <Routes>
+            <Route path="/" element={<ProductsPage />} />
+            <Route path="/products" element={<ProductsPage />} />
+            <Route path="/products/:category" element={<ProductsCategory />} />
+            <Route path="/product/:id" element={<ProductDetailPage />} />
+            <Route path="/favorites" element={<FavoritesPage />} />
+            <Route path="/cart" element={<CartPage />} />
+            <Route path="/auth" element={<AuthPage />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </CartProvider>
+      </FavoritesProvider>
     </BrowserRouter>
   </StrictMode>
 );
