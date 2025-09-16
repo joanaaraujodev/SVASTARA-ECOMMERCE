@@ -4,6 +4,7 @@ import { CartContext } from "./CartContext";
 import Counter from "./Counter";
 import fav from "../assets/outros/fav.png";
 import { FavoritesContext } from "./FavoritesContext";
+import icone_preto from "../assets/logos/icone_preto.png"
 
 function ProductCard({
   img,
@@ -138,7 +139,7 @@ function ProductCard({
           </div>
           <img
             className={`${className}__footer__logo`}
-            src="src/assets/logos/icone_preto.png"
+            src={icone_preto}
             alt="svastara_logo"
           />
         </div>
