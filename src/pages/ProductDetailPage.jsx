@@ -31,6 +31,7 @@ function ProductDetailPage() {
 
   return (
     <ProductDetailCard
+      productId={product.id}
       title={product.title}
       description={product.description}
       category={product.category}

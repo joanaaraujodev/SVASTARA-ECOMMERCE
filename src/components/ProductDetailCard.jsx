@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { CartContext } from "./CartContext";
 import fav from "../assets/outros/fav.png";
 import cart_white from "../assets/outros/cart_white.png";
+import { FavoritesContext } from "./FavoritesContext";
 
 function ProductDetailCard({
   title,
@@ -14,9 +15,11 @@ function ProductDetailCard({
   shipping,
   availability,
   returnPolicy,
+  productId,
 }) {
   const [mainImage, setMainImage] = useState("frame-1");
   const { addToCart } = useContext(CartContext);
+  const { toggleFav } = useContext(FavoritesContext);
 
   return (
     <div className="productDetailCard__main">
@@ -93,7 +96,9 @@ function ProductDetailCard({
           </div>
 
           <div className="productDetailCard__info__buttons__favs">
-            <button>Save to favorites</button>
+            <button onClick={() => toggleFav({ id: productId, title })}>
+              Save to favorites
+            </button>
             <img src={fav} alt="fav" />
           </div>
         </div>
