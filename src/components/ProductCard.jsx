@@ -4,7 +4,17 @@ import { CartContext } from "./CartContext";
 import Counter from "./Counter";
 import fav from "../assets/outros/fav.png";
 import { FavoritesContext } from "./FavoritesContext";
-import icone_preto from "../assets/logos/icone_preto.png"
+import icone_preto from "../assets/logos/icone_preto.png";
+import beauty from "../assets/icones-categorias/beauty.png";
+import fragrances from "../assets/icones-categorias/fragances.png";
+import furniture from "../assets/icones-categorias/furniture.png";
+import smartphones from "../assets/icones-categorias/smartphones.png";
+import clothes from "../assets/icones-categorias/clothes.png";
+import groceries from "../assets/icones-categorias/groceries.png";
+import sports from "../assets/icones-categorias/sports.png";
+import home_decor from "../assets/icones-categorias/home-decor.png";
+import kitchen from "../assets/icones-categorias/kitchen.png";
+import shoes from "../assets/icones-categorias/shoes.png";
 
 function ProductCard({
   img,
@@ -19,13 +29,20 @@ function ProductCard({
   bin,
   addToFavs = false,
 }) {
-  const categoryIcons = {
-    Clothes: "src/assets/icones-categorias/Clothes.png",
-    furniture: "src/assets/icones-categorias/Furniture.png",
-    laptops: "src/assets/icones-categorias/Electronics.png",
-    Shoes: "src/assets/icones-categorias/Shoes.png",
-    Miscellaneous: "src/assets/icones-categorias/Miscellaneous.png",
-  };
+  const categoryInfo = [
+    { name: "beauty", icon: beauty },
+    { name: "fragrances", icon: fragrances },
+    { name: "groceries", icon: groceries },
+    { name: "home-decoration", icon: home_decor },
+    { name: "kitchen-accessories", icon: kitchen },
+    { name: "furniture", icon: furniture },
+    { name: "smartphones", icon: smartphones },
+    { name: "mens-shirts", icon: clothes },
+    { name: "womens-shoes", icon: shoes },
+    { name: "sports", icon: sports },
+  ];
+
+  const currentCategory = categoryInfo.find((c) => c.name === category);
 
   const { addToCart, removeFromCart } = useContext(CartContext);
   const { toggleFav, isFav } = useContext(FavoritesContext);
@@ -36,8 +53,10 @@ function ProductCard({
     navigate(`/product/${productId}`);
   };
 
-  const calculateTotal = (unitPrice, quantity) => {
-    return `${unitPrice * quantity}€`;
+  const calculateTotal = (onePrice, quantity) => {
+    const numericPrice = parseFloat(String(onePrice));
+    if (isNaN(numericPrice)) return "N/A";
+    return `${(numericPrice * quantity).toFixed(2)}€`;
   };
 
   return (
@@ -123,7 +142,7 @@ function ProductCard({
           <div className={`${className}__footer__info`}>
             <img
               className={`${className}__footer__info__categoryicon`}
-              src={categoryIcons[category]}
+              src={currentCategory?.icon}
               alt={category}
             />
 

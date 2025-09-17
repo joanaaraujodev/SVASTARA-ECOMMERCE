@@ -20,6 +20,7 @@ import { CartProvider } from "./components/CartContext";
 import CartNotification from "./components/CartNotification";
 import { FavoritesProvider } from "./components/FavoritesContext";
 import FavsNotification from "./components/FavsNotification";
+import Footer from "./components/footer";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -43,6 +44,7 @@ createRoot(document.getElementById("root")).render(
             <Route path="/auth" element={<AuthPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
+          <Footer/>
         </CartProvider>
       </FavoritesProvider>
     </BrowserRouter>
