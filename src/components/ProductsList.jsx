@@ -51,11 +51,12 @@ function ProductsList() {
         {filteredProducts.map((product) => {
           return (
             <ProductCard
+            
               className="productCard"
               key={product.id}
               img={product.images?.[0]}
               title={product.title}
-              price={`${product.price} €`}
+              price={`${product?.price} €`}
               category={product.category}
               productId={product.id}
             />

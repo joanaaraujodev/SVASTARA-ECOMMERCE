@@ -1,7 +1,9 @@
 function Counter({ value, onChange }) {
-  
   const increment = () => {
-    if (value < 10) onChange(value + 1);
+    if (value < 10) {
+      onChange(value + 1);
+      console.log(value + 1, "value + 1");
+    }
   };
 
   const decrement = () => {

@@ -24,21 +24,20 @@ function capitalizeFirst(str) {
 function SideBar() {
   return (
     <>
-      <div className="sidebar">
+      <aside className="sidebar">
         <div className="sidebar__links">
           <h2 style={{ marginBottom: "2rem" }}>Categories</h2>
-          {categories.map((category) => (
-            <>
-              <NavLink
-                className={({ isActive }) =>
-                  isActive ? "sidebar__links--active" : ""
-                }
-                to={`/products/category/${category.name}`}
-              >
-                <img src={category.icon} alt={category.name} />
-                <h3>{capitalizeFirst(category.name)}</h3>
-              </NavLink>
-            </>
+          {categories.map((category, index) => (
+            <NavLink
+              key={`${index}-${category.name}`}
+              className={({ isActive }) =>
+                isActive ? "sidebar__links--active" : ""
+              }
+              to={`/products/category/${category.name}`}
+            >
+              <img src={category.icon} alt={category.name} />
+              <h3>{capitalizeFirst(category.name)}</h3>
+            </NavLink>
           ))}
         </div>
 
@@ -50,7 +49,7 @@ function SideBar() {
           <h3>Release notes</h3>
           <h3>Terms and Policies</h3>
         </div>
-      </div>
+      </aside>
     </>
   );
 }

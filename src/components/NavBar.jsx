@@ -41,9 +41,8 @@ function NavBar() {
       </div>
 
       <div className="navbar__more">
-        <Link className="navbar__more__auth" to="/auth">
+        <Link className="navbar__more__auth">
           <span>login</span>
-
           <img src={!scrolled ? auth_blue : auth_white} alt="cart" width={30} />
         </Link>
         <Link className="navbar__more__cart" to="/cart">

@@ -1,3 +1,4 @@
+import Footer from "../components/footer";
 import ProductsList from "../components/ProductsList";
 import SideBar from "../components/SideBar";
 
