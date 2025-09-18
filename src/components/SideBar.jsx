@@ -21,6 +21,16 @@ function capitalizeFirst(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
+function verifySmartphones(name) {
+  if (
+    name === "smartphones" &&
+    window.matchMedia("(max-width: 393px)").matches
+  ) {
+    return "phones";
+  }
+  return name;
+}
+
 function SideBar() {
   return (
     <>
@@ -50,6 +60,23 @@ function SideBar() {
           <h3>Terms and Policies</h3>
         </div>
       </aside>
+
+      <div className="sidebar__mobile">
+        <div className="sidebar__mobile__links">
+          {categories.map((category, index) => (
+            <NavLink
+              key={`${index}-${category.name}-mobile`}
+              to={`/products/category/${category.name}`}
+              className={({ isActive }) =>
+                isActive ? "sidebar__mobile__links--active" : ""
+              }
+            >
+              <img src={category.icon} alt={category.name} />
+              <h3>{capitalizeFirst(verifySmartphones(category.name))}</h3>
+            </NavLink>
+          ))}
+        </div>
+      </div>
     </>
   );
 }

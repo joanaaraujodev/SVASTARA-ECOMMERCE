@@ -6,9 +6,30 @@ function ProductsList() {
   const [isLoading, setIsLoading] = useState(false);
   const [products, setProducts] = useState([]);
   const [page, setPage] = useState(1);
-  const limit = 15;
-  const pagination = [1, 2, 3, 4, 5];
+  const [limit, setLimit] = useState(15);
+  const [pagination, setPagination] = useState([1, 2, 3, 4, 5]);
+
   const [searchText, setSearchText] = useState("");
+
+  useEffect(() => {
+    function updateValues() {
+      if (window.matchMedia("(max-width: 1200px)").matches) {
+        setLimit(10);
+        setPagination([1, 2, 3, 4, 5, 6]);
+      } else {
+        setLimit(15);
+        setPagination([1, 2, 3, 4, 5]);
+      }
+       setPage(1);
+    }
+
+    updateValues();
+    window.addEventListener("resize", updateValues);
+
+    return () => {
+      window.removeEventListener("resize", updateValues);
+    };
+  }, []);
 
   useEffect(() => {
     const skip = (page - 1) * limit;
@@ -16,7 +37,7 @@ function ProductsList() {
       setIsLoading(true);
       try {
         const data = await fetch(
-          ` https://dummyjson.com/products?limit=${limit}&skip=${skip}`
+          `https://dummyjson.com/products?limit=${limit}&skip=${skip}`
         );
         const newProductsList = await data.json();
 
@@ -28,8 +49,10 @@ function ProductsList() {
         console.log("error", error);
       }
     };
+
     fetchProducts();
-  }, [page]);
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, [page, limit]);
 
   const filteredProducts = products.filter((fproduct) =>
     fproduct.title.toLowerCase().includes(searchText.toLowerCase())
@@ -51,7 +74,6 @@ function ProductsList() {
         {filteredProducts.map((product) => {
           return (
             <ProductCard
-            
               className="productCard"
               key={product.id}
               img={product.images?.[0]}

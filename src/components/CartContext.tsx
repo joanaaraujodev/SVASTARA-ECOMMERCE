@@ -2,11 +2,11 @@ import { useState, createContext, useEffect } from "react";
 
 const CartContext = createContext();
 
+
 function CartProvider({ children }) {
   const [cartItems, setCartItems] = useState([]);
-  const [notification, setNotification] = useState(null);
+  const [notification, setNotification] = useState<string>('');
 
-  console.log(cartItems, "cartItems");
 
   useEffect(() => {
     const storedCart = localStorage.getItem("Cart");
@@ -24,10 +24,10 @@ function CartProvider({ children }) {
 
     setNotification(`${product.title} adicionado ao carrinho!`);
 
-    setTimeout(() => setNotification(null), 3000);
+    setTimeout(() => setNotification(''), 3000);
   };
 
-  const removeFromCart = (id) => {
+  const removeFromCart = (id:string) => {
     const updatedCart = cartItems.filter((item) => item.id !== id);
     setCartItems(updatedCart);
     localStorage.setItem("Cart", JSON.stringify(updatedCart));

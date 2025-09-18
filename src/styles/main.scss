@@ -5,6 +5,7 @@
 @use "generalpages";
 @use "buttons";
 @use "structure";
+// @use "responsive";
 
 html,
 body {
@@ -17,3 +18,5 @@ body {
 a {
   text-decoration: none;
 }
+
+

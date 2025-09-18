@@ -55,6 +55,7 @@ function ProductsCategory() {
         </h1>
       </section>
       <main className="master">
+        <SideBar />
         <div className="searchbar">
           <input
             type="text"
@@ -78,7 +79,7 @@ function ProductsCategory() {
             );
           })}
         </section>
-        <SideBar />
+        
       </main>
     </>
   );
