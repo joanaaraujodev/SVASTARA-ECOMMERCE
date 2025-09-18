@@ -22,7 +22,7 @@ function ProductDetailCard({
   const { toggleFav } = useContext(FavoritesContext);
 
   return (
-    <div className="productDetailCard__main">
+    <div className="productDetailCard">
       <div className="productDetailCard__imgs">
         <div className="productDetailCard__imgs__childs">
           <div

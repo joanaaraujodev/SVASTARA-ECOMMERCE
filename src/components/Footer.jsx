@@ -59,6 +59,9 @@ function Footer() {
             </p>
           </div>
         </section>
+        <span onClick={scrollToTop} className="footer__main__topmobile">
+            Go to the top ↑
+          </span>
       </section>
 
       <section className="footer__social">

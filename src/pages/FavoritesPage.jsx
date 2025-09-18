@@ -50,7 +50,7 @@ function FavoritesPage() {
     <>
       <div className="favspage__title">
         <h1 className="favs__txt">My favorites</h1>
-        <img src={fav} alt="fav_icon" width={50} />
+        <img src={fav} alt="fav_icon"/>
       </div>
 
       <section className="main__myfavs">

@@ -25,6 +25,7 @@ function ProductDetailPage() {
       }
     };
     fetchProductDetail();
+     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, [id]);
 
   if (isLoading) return <Loader />;
