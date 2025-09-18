@@ -8,25 +8,24 @@ import "./styles/main.css";
 import "./styles/reset.css";
 
 //imports dos componentes
-import NavBar from "./components/NavBar";
-import ProductsPage from "./pages/ProductsPage";
-import ProductDetailPage from "./pages/ProductDetailPage";
-import FavoritesPage from "./pages/FavoritesPage";
-import CartPage from "./pages/CartPage";
-import ProductsCategoryPage from "./pages/ProductsCategoryPage";
-import AuthPage from "./pages/AuthPage";
-import NotFoundPage from "./pages/NotFoundPage";
-import { CartProvider } from "./components/CartContext";
-import CartNotification from "./components/CartNotification";
-import { FavoritesProvider } from "./components/FavoritesContext";
-import FavsNotification from "./components/FavsNotification";
-import Footer from "./components/footer";
+import NavBar from "./components/tsx/NavBar";
+import ProductsPage from "./pages/tsx/ProductsPage";
+import ProductDetailPage from "./pages/tsx/ProductDetailPage";
+import FavoritesPage from "./pages/tsx/FavoritesPage";
+import CartPage from "./pages/tsx/CartPage";
+import ProductsCategoryPage from "./pages/tsx/ProductsCategoryPage";
+import NotFoundPage from "./pages/tsx/NotFoundPage";
+import { CartProvider } from "./components/tsx/CartContext";
+import CartNotification from "./components/tsx/CartNotification";
+import { FavoritesProvider } from "./components/tsx/FavoritesContext";
+import FavsNotification from "./components/tsx/FavsNotification";
+import Footer from "./components/tsx/Footer";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
-      <FavoritesProvider>
-        <CartProvider>
+      <CartProvider>
+        <FavoritesProvider>
           <CartNotification />
           <FavsNotification />
           <NavBar />
@@ -41,12 +40,12 @@ createRoot(document.getElementById("root")).render(
             <Route path="/product/:id" element={<ProductDetailPage />} />
             <Route path="/favorites" element={<FavoritesPage />} />
             <Route path="/cart" element={<CartPage />} />
-            <Route path="/auth" element={<AuthPage />} />
+
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
-          <Footer/>
-        </CartProvider>
-      </FavoritesProvider>
+          <Footer />
+        </FavoritesProvider>
+      </CartProvider>
     </BrowserRouter>
   </StrictMode>
 );
